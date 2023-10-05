@@ -21,13 +21,13 @@ class BarangController extends Controller
 
         if(isset($jenis)){
             
-            $barang = barang::where('jenis_id', $jenis)->get();
+            $barang = barang::where('jenis_id', $jenis)->paginate(10);
         }else{
             $barang = barang::with('Jenis')
                 ->where('nama_barang', 'LIKE', '%'.$Search.'%' )
-                ->orWhere('stock','LIKE','%','.$Serach.','%')
+                ->orWhere('stock','LIKE','%'.$Search.'%')
                 ->orWhereHas('Jenis',function($query) use($Search){
-                    $query->where('nama_jenis','LIKE','%','.$Serach.','%')
+                    $query->where('nama_jenis','LIKE','%'.$Search.'%')
                 }
                 ->paginate(10);
         }
