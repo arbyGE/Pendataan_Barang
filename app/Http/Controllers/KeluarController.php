@@ -21,7 +21,7 @@ class KeluarController extends Controller
         $Search = $request->Search;
         $barang = barang::all();
         $keluar = keluar::with('Brng')
-            ->where('Brng',function($query) use($Search) {
+            ->whereHas('Brng',function($query) use($Search) {
                 $query->where('nama_barang','LIKE','%'.$Search.'%');
             })
             ->orWhere('tanggal','LIKE','%'.$Search.'%')
