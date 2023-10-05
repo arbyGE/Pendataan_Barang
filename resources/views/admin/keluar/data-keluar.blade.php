@@ -165,7 +165,7 @@
                       </div>
                       </div>
                         <div class="my-3">
-                          {{ $barang->links() }}
+                          {{ $keluar->links() }}
                         </div>
                   </div>
               </div>
