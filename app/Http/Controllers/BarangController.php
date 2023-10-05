@@ -23,7 +23,13 @@ class BarangController extends Controller
             
             $barang = barang::where('jenis_id', $jenis)->get();
         }else{
-            $barang = barang::where('nama_barang', 'LIKE', '%'.$Search.'%' )->paginate(10);
+            $barang = barang::with('Jenis')
+                ->where('nama_barang', 'LIKE', '%'.$Search.'%' )
+                ->orWhere('stock','LIKE','%','.$Serach.','%')
+                ->orWhereHas('Jenis',function($query) use($Search){
+                    $query->where('nama_jenis','LIKE','%','.$Serach.','%')
+                }
+                ->paginate(10);
         }
         
         return view('admin/barang/data-barang',compact('barang','Search','pilihanJenis','jenis'));
