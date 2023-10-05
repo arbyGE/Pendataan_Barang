@@ -105,6 +105,9 @@
                           <a class="btn btn-outline-success" href="/admin/masuk/masuk-export">Export</a>
                         </div>
                         </div>
+                         <div class="my-3">
+                          {{ $masuk>links() }}
+                        </div>
                     </div>
                 </div>
             </div>
