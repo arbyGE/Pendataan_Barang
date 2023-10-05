@@ -22,10 +22,10 @@ class KeluarController extends Controller
         $barang = barang::all();
         $keluar = keluar::with('Brng')
             ->where('Brng',function($query) use($Search) {
-                $query->where('nama_barang','LIKE','%','.$Search.','%')
-            }
+                $query->where('nama_barang','LIKE','%'.$Search.'%');
+            })
             ->orWhere('tanggal','LIKE','%'.$Search.'%')
-            ->orWhere('satuan','LIKE','%','.$Search.','%') 
+            ->orWhere('satuan','LIKE','%'.$Search.'%') 
                     ->paginate(10);
         return view('/admin/keluar/data-keluar',compact('keluar','barang'));
     }
