@@ -165,7 +165,7 @@
                       </div>
                       </div>
                         <div class="my-3">
-                          {{ $keluar->links() }}
+                          {{ $keluar->withQueryString()->links() }}
                         </div>
                   </div>
               </div>
