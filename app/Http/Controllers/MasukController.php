@@ -20,8 +20,13 @@ class MasukController extends Controller
     {
         $Search = $request->Search;
         $barang = barang::all();
-        $masuk = masuk::with('Barang')->where('tanggal','LIKE','%'.$Search.'%')->
-               get();
+        $masuk = masuk::with('Barang')
+            ->where('Barang',function($query) use($Search) {
+                $query->where('nama_barang','LIKE','%','.$Search.','%')
+            }
+            ->orWhere('tanggal','LIKE','%'.$Search.'%')
+            ->orWhere('satuan','LIKE','%','.$Search.','%') 
+            ->paginate(10);
         return view('admin/masuk/data-masuk',compact('masuk','barang'));
     }
 
