@@ -114,6 +114,9 @@
                             <a class="btn btn-outline-success" href="/admin/barang/barang-export">Export</a>
                           </div>
                         </div>
+                         <div class="my-3">
+                              {{ $barang->links() }}
+                        </div>
                       </div>
                     </div>
             </div>
