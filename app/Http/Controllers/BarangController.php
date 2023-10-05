@@ -23,7 +23,7 @@ class BarangController extends Controller
             
             $barang = barang::where('jenis_id', $jenis)->get();
         }else{
-            $barang = barang::where('nama_barang', 'LIKE', '%'.$Search.'%' )->get();
+            $barang = barang::where('nama_barang', 'LIKE', '%'.$Search.'%' )->paginate(10);
         }
         
         return view('admin/barang/data-barang',compact('barang','Search','pilihanJenis','jenis'));
