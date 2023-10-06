@@ -49,15 +49,24 @@
             </div>
 
             <div class="container p-5 col-lg-10">
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                @if (Session::has('status'))
+                  <div class="alert alert-success" role="alert">
+                    {{ Session::get('massage') }}
+                  </div>
+                  @endif
               <div class="card">
                 <div class="card-header" style="background-color:rgb(0, 82, 189)">
                   <h3 style="color: aliceblue" class="text-center ">Data Barang Masuk</h3>
                 </div>
-                <!-- @if (Session::has('status'))
-                  <div class="alert alert-success" role="alert">
-                    {{ Session::get('massage') }}
-                  </div>
-                  @endif -->
                   <div class="card-body">
                     <div style="overflow-x:auto;">
                       <div class="my-3 col-12 col-sm-8 col-md-6">
