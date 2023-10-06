@@ -21,7 +21,7 @@
       color: #fff;
       text-decoration: none;
       display: block;
-      padding: 19px;
+      padding: 25px;
   }
   </style>
 <body>
@@ -41,34 +41,25 @@
         <div class="row g-0 h-100">
             <div class="sidebare col-lg-2 collapse d-lg-block" id="menu">
               
-                    <a href="/" class="badge float-start"><span data-feather="home"></span> Home</a>
-                    <a href="/admin/barang/data-barang" class="badge float-start"><span data-feather="package"></span>Barang</a>
-                    <a href="/admin/masuk/data-masuk" class="badge float-start"><span data-feather="database"></span>Barang Masuk</a>
-                    <a href="/admin/jenis/data-jenis" class="badge float-start"><span data-feather="grid"></span>Jenis</a>
-                    <a href="/admin/keluar/data-keluar"class="badge float-start"><span data-feather="external-link"></span>Barang Keluar</a>
-                    <a href="/logout"class="badge float-start"><span data-feather="log-out"></span>Logout</a>
+              <a href="/" class="badge float-start"><span data-feather="home"></span> Home</a>
+              <a href="/admin/barang/data-barang" class="badge float-start"><span data-feather="package"></span> Data Barang</a>
+              <a href="/admin/masuk/data-masuk" class="badge float-start"><span data-feather="database"></span>Barang Masuk</a>
+              <a href="/admin/jenis/data-jenis" class="badge float-start" ><span data-feather="grid"></span>Jenis</a>
+              <a href="/admin/keluar/data-keluar"class="badge float-start"><span data-feather="external-link"></span>Barang Keluar</a>
+              <a href="/logout"class="badge float-start"><span data-feather="log-out"></span>Logout</a>
                 
             </div>
 
             <div class="container p-5 col-lg-10">
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-                 @if (Session::has('status'))
-                <div class="alert alert-success" role="alert">
-                  {{ Session::get('message') }}
-                </div>
-                @endif
               <div class="card">
                 <div class="card-header" style="background-color: rgb(0, 82, 189)">
                   <h3 style="color: aliceblue" class="text-center ">Data Barang</h3>
                 </div>
+                <!-- @if (Session::has('status'))
+                <div class="alert alert-success" role="alert">
+                  {{ Session::get('massage') }}
+                </div>
+                @endif -->
                 <div class="card-body">
                   <div style="overflow-x:auto;">
                     <div class="my-3 col-12 col-sm-8 col-md-6">
@@ -101,6 +92,7 @@
                                 <td>No</td>
                                 <th>Nama Barang</th>
                                 <th>Deskripsi</th>
+                                <th>Jenis</th>
                                 <th>Stok</th>
                                 <th colspan="2">Aksi</th>
                             </tr>
@@ -109,11 +101,12 @@
                                 <td>{{ $loop -> iteration }}</td>
                                 <td>{{ $datas -> nama_barang }}</td>
                                 <td>{{ $datas-> deskripsi  }}</td>
+                                <td>{{ $datas-> nama_jenis  }}</td>
                                 <td>{{ $datas -> stock }}</td>
             
             
                                 <td>
-                                    <a href="/admin/barang/barang-edit/{{ $datas->id }}" class="btn btn-success" class="badge bg dark"><span data-feather="edit"></a>
+                                    <a href="/admin/barang/barang-edit/{{ $datas->id }}" class="btn badge bg-success" data-bs-toggle="modal" data-bs-target="#editModal"><span data-feather="edit"></a>
                                     <a href="/admin/barang/data-delete/{{ $datas->id }}" class="btn btn-danger"class="badge bg-dark"><span data-feather="x-square"></a>
                                     @endforeach
                                 </td>
@@ -122,9 +115,6 @@
                           <div class="mt-5 d-flex justify-content-center">
                             <a class="btn btn-outline-success" href="/admin/barang/barang-export">Export</a>
                           </div>
-                        </div>
-                         <div class="my-3">
-                              {{ $barang->links() }}
                         </div>
                       </div>
                     </div>
@@ -183,6 +173,61 @@
   </div>
 </div>
 </div>
+
+  {{-- Edit Modal --}}
+
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Data Barang</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/admin/barang/data-barang/{{ $datas->id }}" method="post">
+          @csrf
+          @method('PUT') 
+          <div class="mb-3">
+              <label for="nama_barang">Nama Barang</label>
+              <input name="nama_barang" id="nama_barang" class="form-control" value="{{ $datas->nama_barang }}">   
+          </div>
+  
+          <div class="mb-3">
+              <label for="deskripsi">Deskripsi</label>
+              <input type="text" name="deskripsi" id="deskripsi" class="form-control" value="{{ $datas->deskripsi }}">
+          </div>
+  
+          <div class="mb-3">
+              <label for="stock">Stock</label>
+              <input type="text" name="stock" id="stock" class="form-control" value="{{ $datas->stock }}">
+          </div>
+  
+          <div class="mb-3">
+              <label for="jenis_id">Jenis</label>
+              <select name="jenis_id" id="jenis_id" class="form-control" required>
+                <option value="{{$datas->Jenis->id}}">{{$datas->Jenis->nama_jenis}}</option>
+                @foreach ($pilihanJenis as $item)
+                    <option value="{{ $item->id}}">{{$item->nama_jenis}}</option>
+                @endforeach
+            </select>
+          </div>
+  
+          <div class="mb-3">
+              <button class="btn btn-success" type="submit">Simpan</button>
+              <a class="btn btn-danger" href="/admin/barang/data-barang">Cancel</a>
+          </div>
+
+
+      </form>
+                  </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
       
 {{-- <div class="container mt-4">
   <div class="card">
