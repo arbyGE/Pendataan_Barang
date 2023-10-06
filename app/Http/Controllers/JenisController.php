@@ -33,9 +33,16 @@ class JenisController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'nama_jenis' => 'max:30|required',
+        ]);
         $jenis = new jenis;
         $jenis->nama_jenis = $request->nama_jenis;
         $jenis->save();
+         if($jenis) {
+            Session::flash('status','success');
+            Session::flash('message','Anda berhasil menambahkan data jenis barang');
+        }
         return redirect('/admin/jenis/data-jenis');
     }
 
@@ -61,9 +68,16 @@ class JenisController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $validated = $request->validate([
+            'nama_jenis' => 'max:30|required',
+        ]);
         $jenis = jenis::findOrFail($id);
         $jenis->nama_jenis = $request->nama_jenis;
         $jenis->save();
+        if($jenis) {
+            Session::flash('status','success');
+            Session::flash('message','Anda berhasil mengedit data jenis barang');
+        }
         return redirect('/admin/jenis/data-jenis');
     }
 
@@ -78,6 +92,10 @@ class JenisController extends Controller
     {
         $deletejenis = jenis::findOrFail($id);
         $deletejenis->delete();
+          if($deletejenis) {
+            Session::flash('status','success');
+            Session::flash('message','Anda berhasil mengedit data jenis barang');
+        }
         return redirect('/admin/jenis/data-jenis');
     }
     public function export()
