@@ -7,6 +7,8 @@ use Carbon\Carbon;
 use App\Exports\BarangExport;
 use App\Models\jenis;
 use Maatwebsite\Excel\Facedes\Excel;
+use Illuminate\Support\Facades\Session;
+
 
 class BarangController extends Controller
 {
