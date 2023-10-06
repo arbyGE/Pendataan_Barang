@@ -51,7 +51,7 @@ Route::get('/admin/barang/barang-export',[BarangController::class, 'export']);
 Route::get('/admin/masuk/data-masuk',[MasukController::class, 'index'])->middleware('auth');
 Route::get('/admin/masuk/masuk-add',[MasukController::class, 'create'])->middleware('auth');
 Route::post('/admin/masuk/data-masuk',[MasukController::class, 'store'])->middleware('auth');
-Route::get('/admin/masuk/masuk-edit/{id}',[MasukController::class, 'edit'])->middleware('auth');
+Route::get('/admin/masuk/data-masuk/{id}',[MasukController::class, 'edit'])->middleware('auth');
 Route::put('/admin/masuk/data-masuk/{id}',[MasukController::class, 'update'])->middleware('auth');
 Route::get('/admin/masuk/masuk-delete/{id}',[MasukController::class, 'delete'])->middleware('auth');
 Route::delete('/admin/masuk/masuk-delete/{id}',[MasukController::class, 'destroy'])->middleware('auth');
@@ -77,11 +77,3 @@ Route::put('/admin/jenis/data-jenis/{id}',[JenisController::class, 'update'])->m
 Route::get('/admin/jenis/jenis-delete/{id}',[JenisController::class, 'delete'])->middleware('auth');
 Route::delete('/admin/jenis/jenis-delete/{id}',[JenisController::class, 'destroy'])->middleware('auth');
 Route::get('/admin/jenis/jenis-export',[JenisController::class, 'export'])->middleware('auth');
-
-
-
-
-
-
-
-
