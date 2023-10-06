@@ -50,12 +50,27 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
+         $validated = $request->validate([
+            'nama_barang' => 'max:30|required',
+            'deskripsi' => 'max:40|required',
+            'stock' => 'required',
+            'jenis_id' => 'required'
+        ]);
+
         $barang = new barang;
         $barang->nama_barang = $request->nama_barang;
         $barang->deskripsi = $request->deskripsi;
         $barang->stock = $request->stock;
         $barang->jenis_id = $request->jenis_id;
         $barang->save();
+
+         if($barang) {
+            Session::flash('status','success');
+            Session::flash('message','Anda berhasil menambahkan data');
+            
+            Session::flash('status','failed');
+            Session::flash('error','Anda gagal menambahkan data');
+        }
         return redirect('/admin/barang/data-barang');
     }
 
@@ -82,12 +97,22 @@ class BarangController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $validated = $request->validate([
+            'nama_barang' => 'max:30|required',
+            'deskripsi' => 'max:40|required',
+            'stock' => 'required',
+            'jenis_id' => 'required'
+        ]);
         $barang = barang::findOrFail($id);
         $barang->nama_barang = $request->nama_barang;
         $barang->deskripsi = $request->deskripsi;
         $barang->stock = $request->stock;
         $barang->jenis_id = $request->jenis_id;
         $barang->save();
+         if($barang) {
+            Session::flash('status','success');
+            Session::flash('message','Anda berhasil mengedit data');
+        }
         return redirect('/admin/barang/data-barang');
     }
 
