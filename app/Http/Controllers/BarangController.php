@@ -127,6 +127,10 @@ class BarangController extends Controller
     {
         $deletebarang = barang::findOrFail($id);
         $deletebarang->delete();
+        if($deletebarang) {
+            Session::flash('status','success');
+            Session::flash('message','Anda berhasil delete data');
+        }
         return redirect('/admin/barang/data-barang');
     }
     public function export()
