@@ -48,6 +48,13 @@ class MasukController extends Controller
      */
     public function store(Request $request)
     {
+         $validated = $request->validate([
+            'id_barang' => 'required',
+            'tanggal' => 'required',
+            'jumlah' => 'required',
+            'satuan' => 'required',
+            'keterangan' => 'max:50'
+        ]);
         $masuk = new masuk;
         $masuk->id_barang = $request->id_barang;
         $masuk->tanggal = $request->tanggal;
@@ -55,6 +62,10 @@ class MasukController extends Controller
         $masuk->satuan = $request->satuan;
         $masuk->keterangan = $request->keterangan;
         $masuk->save();
+         if($masuk) {
+            Session::flash('status','success');
+            Session::flash('message','Anda berhasil menambahkan data barang masuk');
+        }
         return redirect('/admin/masuk/data-masuk');
     }
 
@@ -87,6 +98,14 @@ class MasukController extends Controller
      */
     public function update(Request $request, string $id)
     {
+         $validated = $request->validate([
+            'id_barang' => 'required',
+            'tanggal' => 'required',
+            'jumlah' => 'required',
+            'satuan' => 'required',
+            'keterangan' => 'max:50'
+        ]);
+
         $masuk = masuk::findOrFail($id);
         $masuk->id_barang = $request->id_barang;
         $masuk->tanggal = $request->tanggal;
@@ -94,6 +113,10 @@ class MasukController extends Controller
         $masuk->satuan = $request->satuan;
         $masuk->keterangan = $request->keterangan;
         $masuk->save();
+         if($masuk) {
+            Session::flash('status','success');
+            Session::flash('message','Anda berhasil mengedit data barang masuk');
+        }
         return redirect('/admin/masuk/data-masuk');
     }
 
@@ -108,6 +131,10 @@ class MasukController extends Controller
     {
         $deletemasuk = masuk::findOrFail($id);
         $deletemasuk->delete();
+         if($deletemasuk) {
+            Session::flash('status','success');
+            Session::flash('message','Anda berhasil menghapus data barang masuk');
+        }
         return redirect('/admin/masuk/data-masuk');
     }
     public function export()
