@@ -44,6 +44,14 @@ class KeluarController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'id_barang' => 'required',
+            'tanggal' => 'required',
+            'jumlah' => 'required',
+            'satuan' => 'required',
+            'keterangan' => 'max:50'
+        ]);
+
         $keluar = new keluar;
         $keluar->id_barang = $request->id_barang;
         $keluar->tanggal = $request->tanggal;
@@ -51,6 +59,10 @@ class KeluarController extends Controller
         $keluar->satuan = $request->satuan;
         $keluar->keterangan = $request->keterangan;
         $keluar->save();
+         if($keluar) {
+            Session::flash('status','success');
+            Session::flash('message','Anda berhasil menambahkan data barang keluar');
+        }
         return redirect('/admin/keluar/data-keluar');
     }
 
@@ -84,6 +96,13 @@ class KeluarController extends Controller
      */
     public function update(Request $request, string $id)
     {
+          $validated = $request->validate([
+            'id_barang' => 'required',
+            'tanggal' => 'required',
+            'jumlah' => 'required',
+            'satuan' => 'required',
+            'keterangan' => 'max:50'
+        ]);
         $keluar = keluar::findOrFail($id);
         $keluar->id_barang = $request->id_barang;
         $keluar->tanggal = $request->tanggal;
@@ -91,6 +110,10 @@ class KeluarController extends Controller
         $keluar->satuan = $request->satuan;
         $keluar->keterangan = $request->keterangan;
         $keluar->save();
+         if($keluar) {
+            Session::flash('status','success');
+            Session::flash('message','Anda berhasil mengedit data barang keluar');
+        }
         return redirect('/admin/keluar/data-keluar');
     }
 
@@ -109,6 +132,10 @@ class KeluarController extends Controller
     {
         $deletekeluar = keluar::findOrFail($id);
         $deletekeluar->delete();
+            if($deletekeluar) {
+            Session::flash('status','success');
+            Session::flash('message','Anda berhasil menghapus data barang keluar');
+        }
         return redirect('/admin/keluar/data-keluar');
     }
     public function export()
