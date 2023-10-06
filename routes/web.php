@@ -6,6 +6,7 @@ use App\Http\Controllers\MasukController;
 use App\Http\Controllers\KeluarController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\JenisController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,8 @@ Route::get('/admin/keluar/data-keluar', function () {
 Route::get('/login',[AuthController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/login',[AuthController::class, 'authentication'])->middleware('guest');
 Route::get('/logout',[AuthController::class, 'logout'])->middleware('auth');
+
+Route::get('/admin/home',[DashboardController::class, 'index'])->middleware('auth');
 
 Route::get('/admin/barang/data-barang',[BarangController::class, 'index'])->middleware('auth');
 Route::get('/admin/barang/data-barang/create',[BarangController::class, 'create'])->middleware('auth');
