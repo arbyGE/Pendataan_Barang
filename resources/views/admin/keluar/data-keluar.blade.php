@@ -27,7 +27,7 @@
 
   
 <div class="main d-flex flex-column justify-content-between">
-  <nav class="navbar navbar-dark navbar-expand-lg" style="background-color: rgb(0, 82, 189)">
+  <nav class="navbar sticky-top navbar-dark navbar-expand-lg" style="background-color: rgb(0, 82, 189)">
       <div class="container-fluid">
        
         <a class="navbar-brand" href="#">Data Barang</a>
