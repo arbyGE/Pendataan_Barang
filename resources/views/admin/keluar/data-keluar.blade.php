@@ -20,79 +20,12 @@
       color: #fff;
       text-decoration: none;
       display: block;
-      padding: 19px;
+      padding: 25px;
   }
 </style>
 <body>
 
-      
-{{-- <div class="container mt-4">
-<!--      @if ($errors->any())
-         <div class="alert alert-danger">
-            <ul>
-                 @foreach ($errors->all() as $error)
-                     <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-     @if (Session::has('status'))
-    <div class="alert alert-success" role="alert">
-      {{ Session::get('massage') }}
-    </div>
-    @endif -->
-  <div class="card">
-    <div class="card-header bg-secondary">
-      <h3 style="color: aliceblue" class="text-center ">Data Barang keluar</h3>
-    </div>
-    <div class="card-body">
-      <div style="overflow-x:auto;">
-        <div class="my-3 col-12 col-sm-8 col-md-6">
-          <form action="" method="get">
-            <div class="input-group mb-3">
-              <input class="form-control" type="search" name="Search" placeholder="Search by tanggal" aria-label="Search" id="floatingInputGroup1">
-              <button class="input-group-text btn-btn-primary" type="submit">Search</button>
-            </div>
-          </form>
-        </div>
-      <a href="/admin/keluar/keluar-add" class="btn btn-outline-primary mb-3 float-end">Tambah</a>
-      <!-- <a href="#" class="btn btn-outline-success mb-3 float-end">Data Yang Sudah Di Hapus</a> -->
-      <table class="table table-straped">
-        <tr>
-                    <td>No</td>
-                    <th>Nama Barang</th>
-                    <th>Tanggal</th>
-                    <th>Jumlah</th>
-                    <th>satuan</th>
-                    <th>keterangan</th>
-                    <th colspan="2">Aksi</th>
-                </tr>
-                @foreach ($keluar as $datas)
-                <tr>   
-                    <td>{{ $loop -> iteration }}</td>
-                    <td>{{ $datas -> Brng->nama_barang }}</td>
-                    <td>{{ $datas->  tanggal }}</td>
-                    <td>{{ $datas -> jumlah }}</td>
-                    <td>{{ $datas -> satuan }}</td>
-                    <td>{{ $datas -> keterangan }}</td>
-
-
-                    <td>
-                        <a href="/admin/keluar/keluar-edit/{{ $datas->id }}" class="btn btn-warning">Edit</a>
-                        <a href="/admin/keluar/keluar-delete/{{ $datas->id }}" class="btn btn-danger">Hapus</a> 
-                        <a href="/admin/keluar/export-pdf/{{ $datas->id }}" class="btn btn-danger">Cetak</a> 
-                        @endforeach
-                    </td>
-                </tr>
-            </table>
-            <div class="mt-5 d-flex justify-content-center">
-              <a class="btn btn-outline-success" href="/admin/keluar/keluar-export">Export</a>
-            </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
-
+  
 <div class="main d-flex flex-column justify-content-between">
   <nav class="navbar navbar-dark navbar-expand-lg" style="background-color: rgb(0, 82, 189)">
       <div class="container-fluid">
@@ -109,32 +42,23 @@
           <div class="sidebare col-lg-2 collapse d-lg-block" id="menu">
               
             <a href="/" class="badge float-start"><span data-feather="home"></span> Home</a>
-                    <a href="/admin/barang/data-barang" class="badge float-start"><span data-feather="package"></span>Barang</a>
-                    <a href="/admin/masuk/data-masuk" class="badge float-start"><span data-feather="database"></span>Barang Masuk</a>
-                    <a href="/admin/jenis/data-jenis" class="badge float-start"><span data-feather="grid"></span>Jenis</a>
-                    <a href="/admin/keluar/data-keluar"class="badge float-start"><span data-feather="external-link"></span>Barang Keluar</a>
-                    <a href="/logout"class="badge float-start"><span data-feather="log-out"></span>Logout</a>
+            <a href="/admin/barang/data-barang" class="badge float-start"><span data-feather="package"></span> Data Barang</a>
+            <a href="/admin/masuk/data-masuk" class="badge float-start"><span data-feather="database"></span>Barang Masuk</a>
+            <a href="/admin/jenis/data-jenis" class="badge float-start" ><span data-feather="grid"></span>Jenis</a>
+            <a href="/admin/keluar/data-keluar"class="badge float-start"><span data-feather="external-link"></span>Barang Keluar</a>
+            <a href="/logout"class="badge float-start"><span data-feather="log-out"></span>Logout</a>
           </div>
 
           <div class="container p-5 col-lg-10">
-               @if ($errors->any())
-         <div class="alert alert-danger">
-            <ul>
-                 @foreach ($errors->all() as $error)
-                     <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-     @if (Session::has('status'))
-    <div class="alert alert-success" role="alert">
-      {{ Session::get('message') }}
-    </div>
-    @endif
             <div class="card">
               <div class="card-header" style="background-color: rgb(0, 82, 189)">
                 <h3 style="color: aliceblue" class="text-center ">Data Barang keluar</h3>
               </div>
+              {{-- <!-- @if (Session::has('status'))
+              <div class="alert alert-success" role="alert">
+                {{ Session::get('massage') }}
+              </div>
+              @endif --> --}}
               <div class="card-body">
                 <div style="overflow-x:auto;">
                   <div class="my-3 col-12 col-sm-8 col-md-6">
@@ -159,9 +83,9 @@
                               <th>satuan</th>
                               <th>keterangan</th>
                               <th colspan="2">Aksi</th>
-                          </tr>
-                          @foreach ($keluar as $datas)
-                          <tr>   
+                            </tr>
+                            @foreach ($keluar as $datas)
+                            <tr>   
                               <td>{{ $loop -> iteration }}</td>
                               <td>{{ $datas -> Brng->nama_barang }}</td>
                               <td>{{ $datas->  tanggal }}</td>
@@ -171,7 +95,7 @@
           
           
                               <td>
-                                  <a href="/admin/keluar/keluar-edit/{{ $datas->id }}" class="btn badge bg-success"><span data-feather="edit"></a>
+                                  <a href="/admin/keluar/keluar-edit/{{ $datas->id }}" class="btn badge bg-success" data-bs-toggle="modal" data-bs-target="#editModal"><span data-feather="edit"></a>
                                   <a href="/admin/keluar/keluar-delete/{{ $datas->id }}" class="btn badge bg-danger"><span data-feather="x-square"></a> 
                                   <a href="/admin/keluar/export-pdf/{{ $datas->id }}" class="btn" style="background-color: #fff;"><img src="/file-pdf.png" alt=""></a> 
                                   @endforeach
@@ -182,22 +106,19 @@
                         <a class="btn btn-outline-success" href="/admin/keluar/keluar-export">Export</a>
                       </div>
                       </div>
-                        <div class="my-3">
-                          {{ $keluar->withQueryString()->links() }}
-                        </div>
                   </div>
               </div>
           </div>
       </div>
     </div>
-</div>
+  </div>
 
 <!-- Button trigger modal -->
 
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog">
+  <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
       <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
@@ -215,18 +136,18 @@
                 @endforeach
             </select>
         </div>
-
+        
         <div class="mb-3">
             <label for="tanggal">Tanggal</label>
             <input name="tanggal" id="tanggal" class="form-control" type="date">
-        </div>
+          </div>
 
-        <div class="mb-3">
+          <div class="mb-3">
             <label for="jumlah">Jumlah</label>
             <input name="jumlah" id="jumlah" class="form-control" type="number" placeholder="Masukan Jumlah Barang">
-        </div>
+          </div>
 
-        <div class="mb-3">
+          <div class="mb-3">
             <label for="satuan">Satuan</label>
             <select name="satuan" id="satuan" class="form-control">
               <option value="">Pilih Satuan</option>
@@ -252,6 +173,135 @@
   </div>
 </div>
 </div>
+
+ {{-- Edit Modal --}}
+
+ <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Data Barang</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/admin/keluar/data-keluar/{{ $datas->id }}" method="post">
+          @csrf
+          @method('PUT') 
+              {{-- @if ($errors->any())
+                  <div class="alert alert-danger">
+                      <ul>
+                          @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                          @endforeach
+                      </ul>
+                  </div>
+              @endif --}}
+                  <div class="mb-3">
+                      <label for="id_barang">Nama Barang</label>
+                      <select name="id_barang" id="id_barang" class="form-control">
+                          <option value="{{ $datas->Brng->id }}">{{ $datas->Brng->nama_barang }}</option>
+                           @foreach ($barang as $item)
+                              <option value="{{ $item->id_barang }}">{{ $item->nama_barang }}</option>
+                          @endforeach
+                      </select>
+                  </div>
+      
+                  <div class="mb-3">
+                      <label for="tanggal">Tanggal</label>
+                      <input name="tanggal" id="tanggal" class="form-control" type="date" value="{{ $datas->tanggal }}">
+                  </div>
+      
+                  <div class="mb-3">
+                      <label for="jumlah">Jumlah</label>
+                      <input name="jumlah" id="jumlah" class="form-control" type="number" placeholder="Masukan Jumlah Barang" value="{{ $datas->jumlah }}">
+                  </div>
+      
+                  <div class="mb-3">
+                      <label for="satuan">Satuan</label>
+                      <select name="satuan" id="satuan" class="form-control">
+                          <option value="{{ $datas->satuan }}">{{ $datas->satuan }}</option>
+                          <option value="kardus">kardus</option>
+                          <option value="kg">Kg</option>
+                          <option value="gr">gr</option>
+                          <option value="Buah">Buah</option>
+                          <option value="Box">Box</option>
+                      </select>
+                  </div>
+      
+                  <div class="mb-3">
+                      <label for="keterangan">keterangan</label>
+                      <input name="keterangan" id="keterangan" class="form-control" type="text" placeholder="keterangan" value="{{ $datas->keterangan }}">
+                  </div>
+      
+                  <div class="mb-3">
+                      <button class="btn btn-success" type="submit">Simpan</button>
+                      <a class="btn btn-danger" href="/admin/keluar/data-keluar">Cancel</a>
+                  </div>
+      </form>
+                  </div>
+      
+    </div>
+  </div>
+</div>
+
+
+{{-- <div class="container mt-4">
+<div class="card">
+<div class="card-header bg-secondary">
+<h3 style="color: aliceblue" class="text-center ">Data Barang keluar</h3>
+</div>
+{{-- <!-- @if (Session::has('status'))
+<div class="alert alert-success" role="alert">
+{{ Session::get('massage') }}
+</div>
+@endif --> 
+<div class="card-body">
+<div style="overflow-x:auto;">
+  <div class="my-3 col-12 col-sm-8 col-md-6">
+    <form action="" method="get">
+      <div class="input-group mb-3">
+        <input class="form-control" type="search" name="Search" placeholder="Search by tanggal" aria-label="Search" id="floatingInputGroup1">
+        <button class="input-group-text btn-btn-primary" type="submit">Search</button>
+      </div>
+    </form>
+  </div>
+<a href="/admin/keluar/keluar-add" class="btn btn-outline-primary mb-3 float-end">Tambah</a>
+<!-- <a href="#" class="btn btn-outline-success mb-3 float-end">Data Yang Sudah Di Hapus</a> -->
+<table class="table table-straped">
+  <tr>
+              <td>No</td>
+              <th>Nama Barang</th>
+              <th>Tanggal</th>
+              <th>Jumlah</th>
+              <th>satuan</th>
+              <th>keterangan</th>
+              <th colspan="2">Aksi</th>
+          </tr>
+          @foreach ($keluar as $datas)
+          <tr>   
+              <td>{{ $loop -> iteration }}</td>
+              <td>{{ $datas -> Brng->nama_barang }}</td>
+              <td>{{ $datas->  tanggal }}</td>
+              <td>{{ $datas -> jumlah }}</td>
+              <td>{{ $datas -> satuan }}</td>
+              <td>{{ $datas -> keterangan }}</td>
+
+
+              <td>
+                  <a href="/admin/keluar/keluar-edit/{{ $datas->id }}" class="btn btn-warning">Edit</a>
+                  <a href="/admin/keluar/keluar-delete/{{ $datas->id }}" class="btn btn-danger">Hapus</a> 
+                  <a href="/admin/keluar/export-pdf/{{ $datas->id }}" class="btn btn-danger">Cetak</a> 
+                  @endforeach
+              </td>
+          </tr>
+      </table>
+      <div class="mt-5 d-flex justify-content-center">
+        <a class="btn btn-outline-success" href="/admin/keluar/keluar-export">Export</a>
+      </div>
+      </div>
+  </div>
+</div>
+</div> --}}
 
 <script>
   feather.replace();
