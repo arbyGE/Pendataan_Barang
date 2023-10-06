@@ -7,6 +7,8 @@ use App\Models\jenis;
 use Carbon\Carbon;
 use App\Exports\JenisExport;
 use Maatwebsite\Excel\Facedes\Excel;
+use Illuminate\Support\Facades\Session;
+
 
 class JenisController extends Controller
 {
