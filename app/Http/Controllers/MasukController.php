@@ -9,6 +9,8 @@ use Carbon\Carbon;
 use App\Exports\MasukExport;
 use Maatwebsite\Excel\Facedes\Excel;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Session;
+
 
 
 class MasukController extends Controller
