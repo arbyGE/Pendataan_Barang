@@ -55,20 +55,55 @@
             </div>
 
             <div class="container p-5 col-lg-10 flex">
-              <h4 class="text-decoration">About Our Website ?</h4>
-              <div class="row mt-3">
-                <div class="col-xl-8 mt-2">
-                  <p><span class="ms-4">Website ini adalah website yang berfungsi untuk mencatat stock barang adanya barang masuk adanya barang keluar semuanya bisa dilakukan di web ini
-                    web ini juga</span> dapat mencatat laporan ketika ada barang masuk dan barang keluar , web ini sangat mmemudahkan para pengusaha pengusaha kecil bahkan hingga pengusaha besar 
-                    dengan biaya yang murah dan flexibel karena web ini bisa diakses kapan dan dimana saja sehingga kita hanya memonitor saja dan apabila data tidak sesuai setelah di cek ulang
-                    pembeli bisa konfirmasi ke suplier dan mengedit jumlah barang yang masuk.
-                  </p>
+              <h4 class="text-decoration">Dashboard</h4>
+              <div class="row">
+                <div class="col-xl-3 col-md-6">
+                  <div class="card bg-primary text-white mb-3">
+                    <div class="card-body">Total Barang
+                      <h4>
+                        {{ $barang }}
+                      </h4>
+                    </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                      <a href="#" class="small text-white stretched-link">View Details</a>
+                      <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-xl ms-5">
-                  <img src="https://d3caycb064h6u1.cloudfront.net/wp-content/uploads/2022/10/dataprocessing-scaled.jpg" alt="aboutfoto" width="80%">
+                <div class="col-xl-3 col-md-6">
+                  <div class="card bg-success text-white mb-3">
+                    <div class="card-body">Total Barang Masuk
+                      <h4>{{ $masuk }}</h4>
+                    </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                      <a href="#" class="small text-white stretched-link">View Details</a>
+                      <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                  </div>
                 </div>
-        </div>
-      </div>
+                <div class="col-xl-3 col-md-6">
+                  <div class="card bg-warning text-white mb-3">
+                    <div class="card-body">Total Barang
+                      <h4>{{ $keluar }}</h4>
+                    </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                      <a href="#" class="small text-white stretched-link">View Details</a>
+                      <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                  <div class="card bg-danger text-white mb-3">
+                    <div class="card-body">Total Jenis Barang
+                      <h4>{{ $jenis }}</h4>
+                    </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                      <a href="#" class="small text-white stretched-link">View Details</a>
+                      <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
         </div>
       </div>
