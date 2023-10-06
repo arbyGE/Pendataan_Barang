@@ -128,7 +128,7 @@
     @endif
      @if (Session::has('status'))
     <div class="alert alert-success" role="alert">
-      {{ Session::get('massage') }}
+      {{ Session::get('message') }}
     </div>
     @endif
             <div class="card">
