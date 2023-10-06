@@ -65,7 +65,7 @@
                       </h4>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                      <a href="#" class="small text-white stretched-link">View Details</a>
+                      <a href="/admin/barang/data-barang" class="small text-white stretched-link">View Details</a>
                       <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                   </div>
@@ -76,7 +76,7 @@
                       <h4>{{ $masuk }}</h4>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                      <a href="#" class="small text-white stretched-link">View Details</a>
+                      <a href="/admin/masuk/data-masuk" class="small text-white stretched-link">View Details</a>
                       <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                   </div>
@@ -87,7 +87,7 @@
                       <h4>{{ $keluar }}</h4>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                      <a href="#" class="small text-white stretched-link">View Details</a>
+                      <a href="/admin/keluar/data-keluar" class="small text-white stretched-link">View Details</a>
                       <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                   </div>
@@ -98,7 +98,7 @@
                       <h4>{{ $jenis }}</h4>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                      <a href="#" class="small text-white stretched-link">View Details</a>
+                      <a href="/admin/jenis/data-jenis" class="small text-white stretched-link">View Details</a>
                       <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                   </div>
