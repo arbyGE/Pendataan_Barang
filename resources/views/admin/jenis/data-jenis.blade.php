@@ -20,7 +20,7 @@
       color: #fff;
       text-decoration: none;
       display: block;
-      padding: 19px;
+      padding: 25px;
   }
 </style>
 <body>
@@ -41,33 +41,24 @@
             <div class="sidebare col-lg-2 collapse d-lg-block" id="menu">
               
               <a href="/" class="badge float-start"><span data-feather="home"></span> Home</a>
-              <a href="/admin/barang/data-barang" class="badge float-start"><span data-feather="package"></span>Barang</a>
+              <a href="/admin/barang/data-barang" class="badge float-start"><span data-feather="package"></span> Data Barang</a>
               <a href="/admin/masuk/data-masuk" class="badge float-start"><span data-feather="database"></span>Barang Masuk</a>
-              <a href="/admin/jenis/data-jenis" class="badge float-start"><span data-feather="grid"></span>Jenis</a>
+              <a href="/admin/jenis/data-jenis" class="badge float-start" ><span data-feather="grid"></span>Jenis</a>
               <a href="/admin/keluar/data-keluar"class="badge float-start"><span data-feather="external-link"></span>Barang Keluar</a>
               <a href="/logout"class="badge float-start"><span data-feather="log-out"></span>Logout</a>
                 
             </div>
 
             <div class="container p-5 col-lg-10">
-             @if ($errors->any())
-              <div class="alert alert-danger">
-                  <ul>
-                      @foreach ($errors->all() as $error)
-                          <li>{{ $error }}</li>
-                      @endforeach
-                  </ul>
-              </div>
-              @endif
-              @if (Session::has('status'))
-               <div class="alert alert-success" role="alert">
-                 {{ Session::get('message') }}
-               </div>
-               @endif 
               <div class="card">
                 <div class="card-header" style="background-color: rgb(0, 82, 189)">
                   <h3 style="color: aliceblue" class="text-center ">Data Jenis</h3>
                 </div>
+                <!-- @if (Session::has('status'))
+                <div class="alert alert-success" role="alert">
+                  {{ Session::get('massage') }}
+                </div>
+                @endif -->
                 <div class="card-body">
                   <div style="overflow-x:auto;">
                     <div class="my-3 col-12 col-sm-8 col-md-6">
@@ -94,7 +85,7 @@
                                 <td>{{ $loop -> iteration }}</td>
                                 <td>{{ $datas -> nama_jenis }}</td>
                                 <td>
-                                    <a href="/admin/jenis/jenis-edit/{{ $datas->id }}" class="btn btn-success"><span data-feather="edit"></a>
+                                    <a href="/admin/jenis/jenis-delete/{{ $datas->id }}" class="btn badge bg-success" data-bs-toggle="modal" data-bs-target="#editModal"><span data-feather="edit"></a>
                                     <a href="/admin/jenis/jenis-delete/{{ $datas->id }}" class="btn btn-danger"><span data-feather="x-square"></a>
                                     @endforeach
                                 </td>
@@ -115,7 +106,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Barang</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -132,6 +123,35 @@
           </div>
       </form>
       </div>
+      
+    </div>
+  </div>
+</div>
+
+ {{-- Edit Modal --}}
+
+ <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Data Barang</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/admin/jenis/data-jenis/{{ $datas->id }}" method="post">
+          @csrf
+          @method('PUT') 
+          <div class="mb-3">
+              <label for="nama_jenis">Nama Jenis</label>
+              <input name="nama_jenis" id="nama_jenis" class="form-control" value="{{ $datas->nama_jenis }}">   
+          </div>
+  
+          <div class="mb-3">
+              <button class="btn btn-success" type="submit">Simpan</button>
+              <a class="btn btn-danger" href="/admin/jenis/data-jenis">Cancel</a>
+          </div>
+      </form>
+                  </div>
       
     </div>
   </div>
